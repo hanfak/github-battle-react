@@ -1,34 +1,38 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-var FriendsContainer = React.createClass({
-  render: function(){
-    var name = 'Tyler McGinnis'
-    var friends = ['Ean Platter', 'Murphy Randall', 'Merrick Christensen']
+var ProfileFacebook = React.createClass({
+  render: function() {
     return (
       <div>
-        <h3> Name: {name} </h3>
-        <ShowList names={friends} />
+        <p>Facebook profile</p>
+        <a href={'https://www.fb.com/' + this.props.username}>
+        {this.props.username}
+        </a>
       </div>
     )
   }
-});
+})
+var ProfileLink = React.createClass({
+  render: function() {
+    return (
+      <a href={'https://github.com/' + this.props.username}>
+        {this.props.username} Github profile
+      </a>
+    )
+  }
+})
 
-var ShowList = React.createClass({
-  render: function(){
-    var listItems = this.props.names.map(function(friend, index){
-      console.log(<li  key={index}> {friend} </li>)
-      return <li  key={index}> {friend} </li>;
-    });
+var Avatar = React.createClass({
+  render: function() {
     return (
       <div>
-        <h3> Friends </h3>
-        <ul>
-          {listItems}
-        </ul>
+        <ProfileLink username={this.props.username} />
+        <br/>
+        <ProfileFacebook username={this.props.username1} />
       </div>
     )
   }
-});
+})
 
-ReactDOM.render(<FriendsContainer />, document.getElementById('app'));
+ReactDOM.render(<Avatar username="hanfak" username1="hanif.fakira" />, document.getElementById('app'));
