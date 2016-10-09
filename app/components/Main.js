@@ -4,8 +4,8 @@ var Link = require('react-router').Link;
 var Main = React.createClass({
   render: function () {
     var menuStyle = {
-      "padding-bottom": "50px",
-      "font-size": "20px"
+      "paddingBottom": "50px",
+      "fontSize": "20px"
     };
 
     return (
