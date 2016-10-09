@@ -1,6 +1,10 @@
 var styles = {
   transparentBg: {
     background: 'transparent'
+  },
+
+  componentText: {
+    marginTop: '40px'
   }
 };
 

@@ -1,14 +1,14 @@
 var React = require('react');
 
-var Guest = React.createClass({
+var About = React.createClass({
   render: function () {
     return (
       <div>
-        Hello from Guest, {this.props.route.name}!
+        <p>Hello {this.props.route.name}!</p>
         <p>MORe random stuff </p>
       </div>
     )
   }
 });
 
-module.exports = Guest;
+module.exports = About;
