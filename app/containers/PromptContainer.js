@@ -23,13 +23,21 @@ var PromptContainer = React.createClass ({
     event.preventDefault();
     var username = this.state.username;
     console.log(username);
+    console.log(this.props)
     this.setState({
       username: ''
     });
-    if(this.props.routeParams.playerOne) {
-      //goto battle
-    }else{
-      //goto player two
+    if (this.props.routeParams.playerOne) {
+      this.context.router.push({
+        pathname: '/battle',
+        query: {
+          playerOne: this.props.routeParams.playerOne,
+          playerTwo: username,
+        }
+      })
+    }
+    else {
+      this.context.router.push('/playerTwo/' + this.state.username)
     }
   },
 
@@ -41,6 +49,7 @@ var PromptContainer = React.createClass ({
           <form onSubmit={this.onSubmitUser}>
             <div className="form-group">
               <input
+                autoFocus
                 className="form-control"
                 placeholder="Github Username"
                 type="text"
