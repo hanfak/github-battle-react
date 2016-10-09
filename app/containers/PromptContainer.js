@@ -15,12 +15,21 @@ var PromptContainer = React.createClass ({
     ])
   },
 
+  onSubmitUser: functions(event) {
+    event.preventDefault();
+    var username = this.state.username;
+    this.setState([
+      username: ''
+    ]);
+    
+  },
+
   render: function () {
     return (
       <div className="jumbotron col-sm-6 col-sm-offset-3 text-center" style={transparentBg}>
         <h2>Choose {this.props.route.header} </h2>
         <div className="col-sm-12">
-          <form>
+          <form onSubmit={this.onSubmitUser}>
             <div className="form-group">
               <input
                 className="form-control"
