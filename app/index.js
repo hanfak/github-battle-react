@@ -2,40 +2,68 @@ var USER_DATA = {
   name: 'Hanif Fakira',
   username: 'hanfak',
   image: 'https://avatars.githubusercontent.com/u/15229697?v=3'
-};
+}
 
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-var ProfilePic = function (props) {
+
+var ProfilePic = React.createClass({
+  render: function () {
     return (
-      <img src={props.imageUrl} style={{height: 100, width: 100}}></img>
+      <img src={this.props.imageUrl} style={{height: 100, width: 100}}>
+      </img>
     )
   }
+});
 
-var ProfileLink = function (props) {
+var Link = React.createClass({
+  changeURL: function() {
+    window.location.replace(this.props.href)
+  },
+
+  render: function(){
     return (
-      <div>
-        <a href={'https://www.github.com/' +  props.username}>
-          {props.username}
-        </a>
-      </div>
+      <span
+        style={{color:'blue', cursor:'pointer'}}
+        onClick={this.changeURL}
+      >
+        {this.props.children} 
+      </span>
     )
   }
+});
 
-var ProfileName = function (props){
-    return <div>{props.name}</div>
-  }
-
-var Avatar = function (props) {
-    return(
+var ProfileLink = React.createClass({
+  render: function () {
+    return (
       <div>
-        <h1>{props.user.name} details</h1>
-        <ProfilePic imageUrl={props.user.image}/>
-        <ProfileName name={props.user.name}/>
-        <ProfileLink username={props.user.username}/>
+        <Link href={'https://www.github.com/' +  this.props.username}>
+          {this.props.username}
+        </Link>
       </div>
     );
   }
+});
+
+var ProfileName = React.createClass({
+  render: function (){
+    return <div>{this.props.name}</div>
+  }
+});
+
+var Avatar = React.createClass({
+  render: function () {
+    return(
+      <div>
+        <h1>{this.props.user.name} details</h1>
+        <ProfilePic imageUrl={this.props.user.image}/>
+        <ProfileName name={this.props.user.name}/>
+        <ProfileLink username={this.props.user.username}/>
+      </div>
+    );
+  }
+});
+
 
 ReactDOM.render(<Avatar user={USER_DATA} />, document.getElementById('app'));
