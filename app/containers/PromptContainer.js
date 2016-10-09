@@ -13,14 +13,14 @@ var PromptContainer = React.createClass ({
     }
   },
 
-  onUpdateUser: function (event) {
+  handleUpdateUser: function (event) {
     console.log(event);
     this.setState({
       username: event.target.value
     });
   },
 
-  onSubmitUser: function (event) {
+  handleSubmitUser: function (event) {
     event.preventDefault();
     var username = this.state.username;
     console.log(username);
@@ -44,7 +44,12 @@ var PromptContainer = React.createClass ({
 
   render: function () {
     return (
-      <Prompt />
+      <Prompt
+        onSubmitUser={this.handleSubmitUser}
+        onUpdateUser={this.handleUpdateUser}
+        header={this.props.route.header}
+        username={this.state.username}
+      />
     );
   }
 });
