@@ -24,12 +24,12 @@ var ConfirmBattleContainer = React.createClass({
     console.log(this.props.location.query);
     return (
       <div>
-
-      {this.state.playerOne} vs {this.props.location.query.playerTwo}
-      <ConfirmBattle
-        playerOne={this.state.playerOne}
-        playerTwo={this.state.playerTwo}
-      />
+        <ConfirmBattle
+          playerOne={this.state.playerOne}
+          playerTwo={this.state.playerTwo}
+          isLoading={this.state.isLoading}
+          playersInfo={this.state.playersInfo}
+        />
       </div>
     )
   }
