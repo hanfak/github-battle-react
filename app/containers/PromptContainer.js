@@ -5,7 +5,7 @@ var PromptContainer = React.createClass ({
   render: function () {
     return (
       <div className="jumbotron col-sm-6 col-sm-offset-3 text-center" style={transparentBg}>
-        <h2>Enter Player 1 </h2>
+        <h2>Choose {this.props.route.header} </h2>
         <div className="col-sm-12">
           <form>
             <div className="form-group">
