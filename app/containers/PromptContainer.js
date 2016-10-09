@@ -2,26 +2,35 @@ var React = require('react');
 var transparentBg = require('../styles').transparentBg;
 
 var PromptContainer = React.createClass ({
+  contextTypes: {
+    router: React.PropTypes.object.isRequired
+  },
+
   getInitialState: function () {
     return {
       username: ''
     }
   },
 
-  onUpdateUser: function(event) {
+  onUpdateUser: function (event) {
     console.log(event);
-    this.setState([
+    this.setState({
       username: event.target.value
-    ])
+    })
   },
 
-  onSubmitUser: functions(event) {
+  onSubmitUser: function (event) {
     event.preventDefault();
     var username = this.state.username;
-    this.setState([
+    console.log(username);
+    this.setState({
       username: ''
-    ]);
-    
+    });
+    if(this.props.routeParams.playerOne) {
+      //goto battle
+    }else{
+      //goto player two
+    }
   },
 
   render: function () {
