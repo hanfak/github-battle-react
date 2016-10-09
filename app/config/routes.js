@@ -10,7 +10,7 @@ var Guest = require("../components/Guest");
 var routes = (
   <Router>
     <Route path='/' component={Main}>
-      <Route path='/home' component={Home} />
+      <IndexRoute component={Home} />
       <Route path='/guest' component={Guest} />
     </Route>
   </Router>
